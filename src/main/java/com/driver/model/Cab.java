@@ -35,7 +35,7 @@ public class Cab {
         return perKmRate;
     }
 
-    public boolean isAvailable() {
+    public boolean getAvailable() {
         return available;
     }
 
