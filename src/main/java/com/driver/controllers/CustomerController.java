@@ -32,7 +32,7 @@ public class CustomerController {
 											@RequestParam String toLocation,
 											@RequestParam Integer distanceInKm) throws Exception {
 		TripBooking bookedTrip = customerService.bookTrip(customerId,fromLocation,toLocation,distanceInKm);
-		return new ResponseEntity<>(bookedTrip.getTripbookingId(), HttpStatus.CREATED);
+		return new ResponseEntity<>(bookedTrip.getTripBookingId(), HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/complete")

@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
 		driverList = driverRepository2.findAll();
 		Driver driver = null;
 		for (Driver driver1 : driverList){
-			if(driver1.getCab().isAvialable()){
+			if(driver1.getCab().isAvailable()){
 				driver = driver1;
 				break;
 			}
@@ -60,15 +60,15 @@ public class CustomerServiceImpl implements CustomerService {
 		if(optionalCustomer.isEmpty()){
 			throw new Exception("customer not present");
 		}
-		driver.getCab().setAvialable(false);
+		driver.getCab().setAvailable(false);
 		Customer customer = optionalCustomer.get();
 
 		TripBooking tripBooking = new TripBooking();
-		tripBooking.setFromlocation(fromLocation);
-		tripBooking.setTolocation(toLocation);
-		tripBooking.setDistanceinkm(distanceInKm);
+		tripBooking.setFromLocation(fromLocation);
+		tripBooking.setToLocation(toLocation);
+		tripBooking.setDistanceInKm(distanceInKm);
 		tripBooking.setBill(0);
-		tripBooking.setTripStatus(TripStatus.CONFIRMED);
+		tripBooking.setStatus(TripStatus.CONFIRMED);
 		tripBooking.setDriver(driver);
 		tripBooking.setCustomer(customer);
 
@@ -98,9 +98,9 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 
 		TripBooking tripBooking = tripBookingOptional.get();
-		tripBooking.getDriver().getCab().setAvialable(true);
+		tripBooking.getDriver().getCab().setAvailable(true);
 		tripBooking.setBill(0);
-		tripBooking.setTripStatus(TripStatus.CANCELED);
+		tripBooking.setStatus(TripStatus.CANCELED);
 
 		tripBookingRepository2.save(tripBooking);
 		//Cancel the trip having given trip Id and update TripBooking attributes accordingly
@@ -114,8 +114,8 @@ public class CustomerServiceImpl implements CustomerService {
 			return;
 		}
 		TripBooking tripBooking = optionalTripBooking.get();
-		tripBooking.setBill(tripBooking.getDriver().getCab().getPerkmrate() * tripBooking.getDistanceinkm());
-		tripBooking.setTripStatus(TripStatus.COMPLETED);
+		tripBooking.setBill(tripBooking.getDriver().getCab().getPerKmRate() * tripBooking.getDistanceInKm());
+		tripBooking.setStatus(TripStatus.COMPLETED);
 		tripBookingRepository2.save(tripBooking);
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
 

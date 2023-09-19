@@ -9,9 +9,9 @@ public class Cab {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    int perkmrate;
+    int perKmRate;
 
-    boolean avialable;
+    boolean available;
 
     @OneToOne
     @JoinColumn
@@ -20,10 +20,10 @@ public class Cab {
     public Cab() {
     }
 
-    public Cab(int id, int perkmrate, boolean avialable, Driver driver) {
+    public Cab(int id, int perKmRate, boolean available, Driver driver) {
         this.id = id;
-        this.perkmrate = perkmrate;
-        this.avialable = avialable;
+        this.perKmRate = perKmRate;
+        this.available = available;
         this.driver = driver;
     }
 
@@ -31,12 +31,12 @@ public class Cab {
         return id;
     }
 
-    public int getPerkmrate() {
-        return perkmrate;
+    public int getPerKmRate() {
+        return perKmRate;
     }
 
-    public boolean isAvialable() {
-        return avialable;
+    public boolean isAvailable() {
+        return available;
     }
 
     public Driver getDriver() {
@@ -47,12 +47,12 @@ public class Cab {
         this.id = id;
     }
 
-    public void setPerkmrate(int perkmrate) {
-        this.perkmrate = perkmrate;
+    public void setPerKmRate(int perkmrate) {
+        this.perKmRate = perkmrate;
     }
 
-    public void setAvialable(boolean avialable) {
-        this.avialable = avialable;
+    public void setAvailable(boolean avialable) {
+        this.available = avialable;
     }
 
     public void setDriver(Driver driver) {
